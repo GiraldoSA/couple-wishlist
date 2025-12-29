@@ -313,7 +313,7 @@ export default function WishlistClient({
             <div className="min-w-0 flex-1">
               <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-rose-900 truncate">{t.wishlist.title}</h1>
               <p className="text-xs sm:text-sm text-rose-700 truncate">
-                {profile?.partner ? `${t.common.welcome} & ${profile.partner.display_name}` : profile?.display_name}
+                {profile?.partner ? `${profile?.display_name || user.email} & ${profile.partner.display_name}` : profile?.display_name || user.email}
               </p>
             </div>
           </div>
@@ -364,9 +364,8 @@ export default function WishlistClient({
                 <div key={invitation.id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 rounded-lg bg-white p-3 sm:p-4">
                   <div className="flex-1 min-w-0">
                     <p className="font-medium text-sm sm:text-base text-amber-900 break-words">
-                      {invitation.inviter?.display_name || invitation.invitee_email} {t.partner.hasInvitedYou}
+                      {invitation.inviter?.display_name || 'Alguien'} {t.partner.hasInvitedYou}
                     </p>
-                    <p className="text-xs text-amber-700 break-all">{invitation.invitee_email}</p>
                   </div>
                   <div className="flex gap-2 flex-shrink-0">
                     <Button
