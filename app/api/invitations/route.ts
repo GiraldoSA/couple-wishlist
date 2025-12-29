@@ -20,8 +20,7 @@ export async function GET() {
     .order("created_at", { ascending: false })
 
   // Obtener invitaciones recibidas
-  const { data: userData } = await supabase.auth.getUser()
-  const userEmail = userData.data.user?.email
+  const userEmail = user.email
 
   const { data: receivedInvitations } = userEmail
     ? await supabase
@@ -79,6 +78,15 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Ya existe una invitación pendiente para este email" }, { status: 400 })
   }
 
+  // Obtener nombre del usuario que invita
+  const { data: inviterProfile } = await supabase
+    .from("profiles")
+    .select("display_name")
+    .eq("id", user.id)
+    .single()
+
+  const inviterName = inviterProfile?.display_name || "Alguien"
+
   // Crear la invitación
   const { data, error } = await supabase
     .from("partner_invitations")
@@ -92,6 +100,21 @@ export async function POST(request: Request) {
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 })
+  }
+
+  // Crear notificación usando una función de la base de datos que buscará al usuario
+  // Esto evita problemas de permisos con admin API
+  // Usamos una función que busca el usuario por email y crea la notificación
+  try {
+    // Intentar crear notificación (la función manejará si el usuario existe o no)
+    await supabase.rpc("create_invitation_notification_by_email", {
+      invitee_email: email,
+      invitation_id: data.id,
+      inviter_name: inviterName,
+    })
+  } catch (err) {
+    // Si falla, no es crítico, continuamos
+    console.error("Error creating notification:", err)
   }
 
   return NextResponse.json({ invitation: data }, { status: 201 })

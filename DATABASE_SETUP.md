@@ -140,6 +140,21 @@ Si prefieres usar otra base de datos:
 
 ⚠️ **Límites del plan gratuito**: El plan gratuito de Supabase tiene límites. Revisa los límites antes de ir a producción.
 
+## Scripts de Corrección
+
+Si encuentras errores de permisos relacionados con `auth.users`, ejecuta el script de corrección:
+
+1. **003_fix_rls_policies.sql**: Corrige las políticas RLS que intentan acceder directamente a `auth.users`
+
+   Este script:
+   - Crea una función helper `get_current_user_email()` que tiene acceso a `auth.users`
+   - Actualiza las políticas RLS para usar esta función en lugar de consultar directamente
+   - Corrige la función `accept_partner_invitation` para usar la función helper
+
+   **Ejecuta este script si ves errores como:**
+   - `permission denied for table users`
+   - `permission denied for schema auth`
+
 ## Soporte
 
 Para más información sobre Supabase:

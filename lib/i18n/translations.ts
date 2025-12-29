@@ -92,6 +92,12 @@ export const translations = {
     footer: {
       developedBy: 'Desarrollado por',
     },
+    // Notifications
+    notifications: {
+      title: 'Notificaciones',
+      noNotifications: 'No tienes notificaciones',
+      markAllRead: 'Marcar todas como leídas',
+    },
   },
   en: {
     // Common
@@ -183,6 +189,12 @@ export const translations = {
     // Footer
     footer: {
       developedBy: 'Developed by',
+    },
+    // Notifications
+    notifications: {
+      title: 'Notifications',
+      noNotifications: 'You have no notifications',
+      markAllRead: 'Mark all as read',
     },
   },
 } as const

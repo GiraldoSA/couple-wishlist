@@ -28,6 +28,7 @@ import {
 } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useLanguage } from "@/lib/i18n/context"
+import { NotificationsBell } from "@/components/notifications-bell"
 
 type WishlistItem = {
   id: string
@@ -305,7 +306,7 @@ export default function WishlistClient({
       <div className="mx-auto max-w-6xl p-3 sm:p-4 md:p-6 pb-16 sm:pb-20">
         {/* Header */}
         <div className="mb-4 sm:mb-6 md:mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 flex-1">
             <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-rose-600 flex-shrink-0">
               <Heart className="h-5 w-5 sm:h-6 sm:w-6 text-white fill-white" />
             </div>
@@ -316,7 +317,8 @@ export default function WishlistClient({
               </p>
             </div>
           </div>
-          <div className="flex gap-2 flex-shrink-0">
+          <div className="flex gap-2 flex-shrink-0 items-center">
+            <NotificationsBell />
             {!profile?.partner_id && (
               <Button
                 variant="outline"
