@@ -301,8 +301,8 @@ export default function WishlistClient({
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-50 via-amber-50 to-pink-50">
-      <div className="mx-auto max-w-6xl p-3 sm:p-4 md:p-6">
+    <div className="flex-1 bg-gradient-to-br from-rose-50 via-amber-50 to-pink-50">
+      <div className="mx-auto max-w-6xl p-3 sm:p-4 md:p-6 pb-16 sm:pb-20">
         {/* Header */}
         <div className="mb-4 sm:mb-6 md:mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
           <div className="flex items-center gap-2 sm:gap-3">

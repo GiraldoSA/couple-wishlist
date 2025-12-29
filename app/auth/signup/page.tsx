@@ -55,7 +55,7 @@ export default function SignUpPage() {
   }
 
   return (
-    <div className="flex min-h-svh w-full items-center justify-center p-4 sm:p-6 md:p-10 bg-gradient-to-br from-rose-50 via-amber-50 to-pink-50">
+    <div className="flex flex-1 w-full items-center justify-center p-4 sm:p-6 md:p-10 bg-gradient-to-br from-rose-50 via-amber-50 to-pink-50">
       <div className="w-full max-w-sm">
         <Card className="border-rose-200 shadow-xl">
           <CardHeader className="text-center px-4 pt-6 pb-4 sm:px-6 sm:pt-6 sm:pb-4">

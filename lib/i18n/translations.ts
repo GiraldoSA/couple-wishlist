@@ -88,6 +88,10 @@ export const translations = {
       alreadyHavePartner: 'Ya tienes una pareja vinculada',
       partnerAlreadyHasPartner: 'El usuario que te invitó ya tiene una pareja',
     },
+    // Footer
+    footer: {
+      developedBy: 'Desarrollado por',
+    },
   },
   en: {
     // Common
@@ -175,6 +179,10 @@ export const translations = {
       cancel: 'Cancel',
       alreadyHavePartner: 'You already have a linked partner',
       partnerAlreadyHasPartner: 'The user who invited you already has a partner',
+    },
+    // Footer
+    footer: {
+      developedBy: 'Developed by',
     },
   },
 } as const
